@@ -13,7 +13,7 @@ import responseHandler from './utils/middlewares/responder.middleware'
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = Number(process.env.PORT || 3000);
 
 // app.get('/error', (req, res, next) => {
 //     const error = new CustomError('Something went wrong!', 500);
@@ -31,7 +31,7 @@ app.use('/api/problems'  , problemRoute);
 app.use(responseHandler);
 app.use(errorHandler);
 
-app.listen(port, async () => {
+app.listen(port,"0.0.0.0", async () => {
   await connect();
   console.log(`Server is running on http://localhost:${port}`);
 });
